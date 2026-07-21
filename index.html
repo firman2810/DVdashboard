@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Fraud & Spending Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="mode-analyst">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">FinScope</span>
+      <span class="brand-sub">Fraud &amp; Spending Intelligence</span>
+    </div>
+
+    <nav class="mode-toggle" role="tablist" aria-label="Dashboard mode">
+      <button class="mode-btn active" data-mode="analyst" role="tab" aria-selected="true">Analyst</button>
+      <button class="mode-btn" data-mode="elderly" role="tab" aria-selected="false">Simplified</button>
+      <button class="mode-btn" data-mode="kids" role="tab" aria-selected="false">Money Habits</button>
+      <button class="mode-btn" data-mode="timeline" role="tab" aria-selected="false">Project Timeline</button>
+    </nav>
+  </header>
+
+  <!-- ===================== ANALYST VIEW ===================== -->
+  <main id="view-analyst" class="view">
+
+    <section class="kpi-row" id="kpi-cards"></section>
+
+    <section class="filters-bar">
+      <div class="filter-group">
+        <label for="filter-start">From</label>
+        <input type="date" id="filter-start">
+      </div>
+      <div class="filter-group">
+        <label for="filter-end">To</label>
+        <input type="date" id="filter-end">
+      </div>
+      <div class="filter-group">
+        <label for="filter-category">Category</label>
+        <select id="filter-category" multiple size="1"></select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-state">State</label>
+        <select id="filter-state" multiple size="1"></select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-search">Search merchant</label>
+        <input type="text" id="filter-search" placeholder="e.g. fraud_...">
+      </div>
+      <button id="filter-reset" class="btn-ghost">Reset filters</button>
+      <span id="active-crossfilter" class="crossfilter-chip" hidden></span>
+    </section>
+
+    <section class="chart-grid">
+      <div class="chart-card">
+        <h3>Fraud Rate by Hour &times; Day <span class="hint">click a cell to drill down</span></h3>
+        <div id="chart-heatmap"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Amount vs. Distance vs. Age <span class="hint">fraud highlighted in red</span></h3>
+        <div id="chart-scatter"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Spend &amp; Fraud by Category <span class="hint">click a bar to filter everything</span></h3>
+        <div id="chart-category"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Monthly Spend Trend</h3>
+        <div id="chart-trend"></div>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <h3>Transactions <span id="table-count" class="hint"></span></h3>
+      <div id="drilldown-table"></div>
+    </section>
+  </main>
+
+  <!-- ===================== ELDERLY / SIMPLIFIED VIEW ===================== -->
+  <main id="view-elderly" class="view" hidden>
+    <section class="kpi-row kpi-row-large" id="kpi-cards-elderly"></section>
+    <section class="filters-bar filters-bar-large">
+      <div class="filter-group">
+        <label for="filter-range-elderly">Show me</label>
+        <select id="filter-range-elderly">
+          <option value="1">This month</option>
+          <option value="3" selected>Last 3 months</option>
+          <option value="12">Last 12 months</option>
+          <option value="all">All time</option>
+        </select>
+      </div>
+    </section>
+    <section class="chart-card chart-card-large">
+      <h3>Your Spending Over Time</h3>
+      <div id="chart-trend-elderly"></div>
+    </section>
+  </main>
+
+  <!-- ===================== KIDS / MONEY HABITS VIEW ===================== -->
+  <main id="view-kids" class="view" hidden>
+    <section class="kids-hero">
+      <h2>Where Does the Money Go? &#128176;</h2>
+      <p>Every slice is something people spend money on!</p>
+    </section>
+    <section class="chart-card chart-card-large">
+      <div id="chart-donut-kids"></div>
+    </section>
+  </main>
+
+  <!-- ===================== PROJECT TIMELINE VIEW (Task 6) ===================== -->
+  <main id="view-timeline" class="view" hidden>
+    <section class="chart-card">
+      <h3>Project Progress Timeline <span class="hint">click a phase to see details</span></h3>
+      <div id="chart-timeline"></div>
+    </section>
+    <section class="chart-card timeline-detail" id="timeline-detail"></section>
+  </main>
+
+  <footer class="footer">
+    <span>TFB3133/TEB3133 Data Visualization Project &mdash; Finance Domain (Fraud Detection &amp; Spending Patterns)</span>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/kpiCards.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/scatterMatrix.js"></script>
+  <script src="js/categoryBar.js"></script>
+  <script src="js/trendLine.js"></script>
+  <script src="js/drilldownTable.js"></script>
+  <script src="js/kidsDonut.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
