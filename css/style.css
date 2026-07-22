@@ -27,8 +27,8 @@
 
 /* ---------- Global reset and accessible base styles ---------- */
 * { box-sizing: border-box; }
-html { background: var(--canvas); scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: radial-gradient(circle at 12% -12%, #fff 0, transparent 34%), var(--canvas); color: var(--ink); font-size: 16px; line-height: 1.5; }
+html { background: #ffffff; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: linear-gradient(135deg, #ffffff 0%, #f0f4fe 40%, #e5ecfb 100%); background-attachment: fixed; color: var(--ink); font-size: 16px; line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 button:focus-visible, input:focus-visible, select:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(67,56,232,.28); }
@@ -37,10 +37,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: none;
 .skip-link:focus { transform: none; }
 
 /* ---------- Header, brand and four-view mode switcher ---------- */
-.app-header { max-width: var(--content); margin: auto; padding: 26px 28px 20px; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+.app-header { width: 100%; max-width: var(--content); margin: 0 auto; padding: 26px 28px 20px; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
 .brand-lockup { display: flex; align-items: center; gap: 16px; min-width: 0; }
 .brand-icon { width: 56px; height: 56px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 18px; color: var(--primary); background: var(--primary-soft); }
-.brand-icon svg { width: 35px; height: 35px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.brand-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
 .eyebrow, .panel-kicker { margin: 0 0 4px; color: var(--primary); font-size: .76rem; font-weight: 850; text-transform: uppercase; letter-spacing: .11em; }
 h1, h2, h3, p { overflow-wrap: break-word; }
 h1 { margin: 0; font-size: clamp(1.65rem, 2.8vw, 2.55rem); line-height: 1.1; letter-spacing: -.045em; }
@@ -53,7 +53,8 @@ h1 span { color: #303747; font-weight: 520; }
 .mode-btn.active { color: #fff; background: var(--primary); }
 
 /* ---------- Shared page width and section headings ---------- */
-.view { max-width: var(--content); margin: 0 auto; padding: 22px 28px 58px; }
+#main-content { flex: 1 0 auto; display: flex; flex-direction: column; }
+.view { max-width: var(--content); margin: 0 auto; padding: 22px 28px 58px; flex: 1 0 auto; }
 .section-intro { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 14px; }
 .section-intro h2, .investigation-heading h2 { margin: 0; font-size: 1.25rem; letter-spacing: -.02em; }
 .section-intro p:not(.eyebrow), .investigation-heading p { margin: 5px 0 0; color: var(--muted); font-size: .88rem; }
@@ -153,7 +154,7 @@ h1 span { color: #303747; font-weight: 520; }
 /* ---------- Interactive project timeline ---------- */
 .timeline-heading { align-items: center; margin-bottom: 18px; }
 .timeline-status { display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid #a9dccb; border-radius: 999px; color: #17664e; background: var(--success-soft); font-size: .79rem; font-weight: 850; white-space: nowrap; }
-.timeline-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(330px, .55fr); gap: 18px; }
+.timeline-layout { display: grid; grid-template-columns: 1fr 320px; gap: 18px; }
 .timeline-panel { overflow-x: auto; }
 #chart-timeline { min-width: 760px; min-height: 470px; }
 .timeline-bar { cursor: pointer; }
@@ -167,7 +168,7 @@ h1 span { color: #303747; font-weight: 520; }
 .timeline-detail dl { display: grid; gap: 12px; margin: 22px 0 0; }
 .timeline-detail dl div { display: grid; grid-template-columns: 100px 1fr; gap: 10px; padding-top: 11px; border-top: 1px solid var(--border); }
 .timeline-detail dt { color: var(--subtle); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
-.timeline-detail dd { margin: 0; color: #303747; font-size: .84rem; font-weight: 650; }
+.timeline-detail dd { margin: 0; color: #303747; font-size: .84rem; font-weight: 650; overflow-wrap: break-word; word-break: break-word; }
 
 /* ---------- Simplified view: larger and more focused components ---------- */
 .filters-bar-large { max-width: 500px; }
@@ -229,7 +230,7 @@ body.mode-elderly .kpi-card .value { font-size: 2.55rem; }
 .detail-grid dd { margin: 3px 0 0; color: #303747; font-size: .83rem; font-weight: 680; word-break: break-word; }
 .detail-note { padding: 12px; border-radius: 10px; color: var(--muted); background: var(--canvas); font-size: .78rem; }
 /* ---------- Shared project footer ---------- */
-.footer { max-width: var(--content); margin: 0 auto; padding: 24px 28px 38px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: .78rem; }
+.footer { width: 100%; max-width: var(--content); margin: 0 auto; padding: 24px 28px 38px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: .78rem; }
 
 /* ---------- Responsive layout: tablet and smaller laptop ---------- */
 @media (max-width: 1120px) {

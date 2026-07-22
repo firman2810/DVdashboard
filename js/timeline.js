@@ -25,7 +25,7 @@ const ProjectTimeline = {
     container.selectAll('*').remove();
     const width = Math.max(760, container.node().clientWidth || 960);
     const height = 450;
-    const margin = { top: 50, right: 28, bottom: 35, left: 190 };
+    const margin = { top: 50, right: 28, bottom: 35, left: 165 };
     const innerW = width - margin.left - margin.right;
     const innerH = height - margin.top - margin.bottom;
     // Time controls horizontal position; the band scale assigns one row per phase.
